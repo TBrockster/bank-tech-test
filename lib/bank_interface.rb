@@ -4,7 +4,15 @@
 class BankInterface
   DEFAULT_STARTING_BALANCE = 0
 
+  def initialize
+    @balance = DEFAULT_STARTING_BALANCE
+  end
+
   def print_statement
-    DEFAULT_STARTING_BALANCE
+    @balance
+  end
+
+  def deposit(amount_to_deposit)
+    @balance += amount_to_deposit
   end
 end

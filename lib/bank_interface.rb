@@ -8,9 +8,9 @@ class BankInterface
   end
 
   def print_statement
-    print_out = @statement_history
-    print_out << ['date || credit || debit || balance']
-    print_out.reverse.join("\n")
+    statement_print_out = @statement_history.dup
+    statement_print_out << ['date || credit || debit || balance']
+    statement_print_out.reverse.join("\n")
   end
 
   def deposit(amount_to_deposit, date_deposited)

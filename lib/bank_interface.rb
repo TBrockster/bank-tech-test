@@ -2,6 +2,7 @@
 
 # this class models the bank interface
 class BankInterface
+  STATEMENT_HEADER = ['date || credit || debit || balance'].freeze
   def initialize
     @balance = 0
     @statement_history = []
@@ -9,7 +10,7 @@ class BankInterface
 
   def print_statement
     statement_print_out = @statement_history.dup
-    statement_print_out << ['date || credit || debit || balance']
+    statement_print_out << STATEMENT_HEADER
     statement_print_out.reverse.join("\n")
   end
 

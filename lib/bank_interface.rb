@@ -4,10 +4,12 @@
 class BankInterface
   def initialize
     @balance = 0
-    @statement_history = [['date || credit || debit || balance']]
+    @statement_history = []
   end
 
   def print_statement
+    @statement_history << ['date || credit || debit || balance']
+    @statement_history.reverse!
     @statement_history.join("\n")
   end
 

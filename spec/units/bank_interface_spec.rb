@@ -15,4 +15,12 @@ describe BankInterface do
       expect(subject.print_statement). to eq 100
     end
   end
+
+  describe '#withdraw' do
+    it 'removes input value from your account' do
+      subject.deposit(100)
+      subject.withdraw(60)
+      expect(subject.print_statement). to eq 40
+    end
+  end
 end

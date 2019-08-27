@@ -15,4 +15,8 @@ class BankInterface
   def deposit(amount_to_deposit)
     @balance += amount_to_deposit
   end
+
+  def withdraw(amount_to_withdraw)
+    @balance -= amount_to_withdraw
+  end
 end

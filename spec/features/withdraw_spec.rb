@@ -3,8 +3,9 @@
 require 'bank_interface'
 
 describe BankInterface do
-  it 'adds to your balance and returns your new balance' do
+  it 'withdraws from your balance' do
     subject.deposit(100)
-    expect(subject.print_statement). to eq 100
+    subject.withdraw(60)
+    expect(subject.print_statement). to eq 40
   end
 end

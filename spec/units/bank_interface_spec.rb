@@ -3,24 +3,12 @@
 require 'bank_interface'
 
 describe BankInterface do
-  describe '#print_statement' do
-    it 'returns balance' do
-      expect(subject.print_statement). to eq BankInterface::DEFAULT_STARTING_BALANCE
-    end
-  end
-
+  it { is_expected.to respond_to(:deposit).with(2).arguments }
+  it { is_expected.to respond_to(:withdraw).with(2).arguments }
   describe '#deposit' do
-    it 'adds input value to your account' do
-      subject.deposit(100)
-      expect(subject.print_statement). to eq 100
-    end
-  end
-
-  describe '#withdraw' do
-    it 'removes input value from your account' do
-      subject.deposit(100)
-      subject.withdraw(60)
-      expect(subject.print_statement). to eq 40
+    it 'adds deposit to balance and returns the correct format' do
+      subject.deposit(50, '27/08/2019')
+      expect(subject.print_statement). to eq("date || credit || debit || balance\n27/08/2019 || 50.00 || || 50.00")
     end
   end
 end

@@ -8,18 +8,28 @@ class BankInterface
   end
 
   def print_statement
-    @statement_history << ['date || credit || debit || balance']
-    @statement_history.reverse!
-    @statement_history.join("\n")
+    print_out = @statement_history
+    print_out << ['date || credit || debit || balance']
+    print_out.reverse.join("\n")
   end
 
   def deposit(amount_to_deposit, date_deposited)
     @balance += amount_to_deposit
+    add_deposit_to_history(amount_to_deposit, date_deposited)
+  end
+
+  def withdraw(amount_to_withdraw, date_withdrawn)
+    @balance -= amount_to_withdraw
+    add_withdrawal_to_history(amount_to_withdraw, date_withdrawn)
+  end
+
+  private
+
+  def add_deposit_to_history(amount_to_deposit, date_deposited)
     @statement_history << ["#{date_deposited} || #{format('%.2f', amount_to_deposit)} || || #{format('%.2f', @balance)}"]
   end
 
-  def withdraw(amount_to_withdraw, date_deposited)
-    @balance -= amount_to_withdraw
-    @statement_history << ["#{date_deposited} || || #{format('%.2f', amount_to_withdraw)} || #{format('%.2f', @balance)}"]
+  def add_withdrawal_to_history(amount_to_withdraw, date_withdrawn)
+    @statement_history << ["#{date_withdrawn} || || #{format('%.2f', amount_to_withdraw)} || #{format('%.2f', @balance)}"]
   end
 end
